@@ -49,7 +49,7 @@ public class ClassTeacher {
     public void changeCondition(Teacher teacher, TeacherCondition newCondition) {
         if (teacherList.contains(teacher)) {
             teacher.condition = newCondition;
-            System.out.println("Teacher " + teacher.name + " " + teacher.surname + " has been set to: " + teacher.condition);
+            System.out.println("Teacher condition of " + teacher.name + " " + teacher.surname + " has been set to: " + teacher.condition);
         }
         else {
             System.out.println("Error. Teacher " + teacher.name + " " + teacher.surname + " does not exist.");
