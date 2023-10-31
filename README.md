@@ -6,16 +6,16 @@ Program functionalities:
 - adding a teacher to a group
 - adding a certain amount to a given teacher's salary
 - removing the teacher completely
-- changing the teacher's status,
+- changing the teacher's condition
 - checking the existence of the teacher's name and returning it data (Comparator used)
 - checking the existence of the teacher's name after entering its fragment and returning his data
-- counting teachers with a given status
+- counting teachers with a given condition
 - listing all teachers with their details
-- sorting the list of teachers - alphabetically by name,
+- sorting the list of teachers - alphabetically by name
 - sorting the list of teachers - by salary in descending order
 - returning the teacher with the highest earnings (Collections.max was used)
-- adding a new teaching group with a given name and the given capacity for the list of groups,
-- deleting a teaching group with a given name,
+- adding a new teaching group with a given name and the given capacity for the list of groups
+- deleting a teaching group with a given name
 - returning empty list objects
 - writing information to standard output containing: name
 group and its percentage filling
