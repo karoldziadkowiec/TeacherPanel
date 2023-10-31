@@ -15,10 +15,10 @@ public class Teacher implements Comparable<Teacher>{
 
     public void printing() {
         System.out.println("Name: " + name);
-        System.out.println("Surname: " + surname);
-        System.out.println("Condition: " + condition);
-        System.out.println("Birthday: " + birthday);
-        System.out.println("Salary: " + salary);
+        System.out.print(", Surname: " + surname);
+        System.out.print(", Condition: " + condition);
+        System.out.print(", Birthday: " + birthday);
+        System.out.print(", Salary: " + salary);
     }
 
     @Override

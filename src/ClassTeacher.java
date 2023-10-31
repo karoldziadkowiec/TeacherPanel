@@ -1,14 +1,21 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ClassTeacher {
     String groupName;
     ArrayList<Teacher>teacherList = new ArrayList<Teacher>();
     int maxNumberOfTeachers;
 
+    public ClassTeacher(String groupName, ArrayList<Teacher>teacherList, int maxNumberOfTeachers) {
+        this.groupName = groupName;
+        this.maxNumberOfTeachers = maxNumberOfTeachers;
+        this.teacherList = teacherList;
+    }
+
     public ClassTeacher(String groupName, int maxNumberOfTeachers) {
         this.groupName = groupName;
         this.maxNumberOfTeachers = maxNumberOfTeachers;
-        this.teacherList = new ArrayList<>();
     }
 
     public void addTeacher(Teacher newTeacher) {
@@ -56,31 +63,73 @@ public class ClassTeacher {
         }
     }
 
-    public void search() {
-
+    public Teacher search(String surname) {
+        for(Teacher teacher : teacherList) {
+            String teacherSurname = teacher.surname;
+            if(teacherSurname.compareTo(surname) == 0 ) {
+                return teacher;
+            }
+        }
+        return null;
     }
 
-    public void searchPartial() {
+    public ArrayList<Teacher> searchPartial(String partialString) {
+        ArrayList<Teacher> matchingTeachers = new ArrayList<>();
 
+        for (Teacher teacher : teacherList) {
+            String teacherName = teacher.name;
+            String teacherSurname = teacher.surname;
+
+            if (teacherName.contains(partialString) || teacherSurname.contains(partialString)) {
+                matchingTeachers.add(teacher);
+            }
+        }
+        return matchingTeachers;
     }
 
-    public void countByCondition() {
-
+    public int countByCondition(TeacherCondition searchedCondition) {
+        int counter = 0;
+        for(Teacher teacher : teacherList) {
+            TeacherCondition teacherCondition = teacher.condition;
+            if(teacherCondition.compareTo(searchedCondition) == 0 ) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     public void summary() {
-
+        System.out.println("Summary of all teachers:");
+        for(Teacher teacher : teacherList) {
+            teacher.printing();
+        }
     }
 
-    public void sortByName() {
-
+    public ArrayList<Teacher> sortByName() {
+        ArrayList<Teacher> sortedList = teacherList;
+        sortedList.sort(Teacher::compareTo);
+        return sortedList;
     }
 
-    public void sortBySalary() {
-
+    public ArrayList<Teacher> sortBySalary() {
+        ArrayList<Teacher> sortedList = teacherList;
+        Comparator<Teacher> myComparator = new Comparator<Teacher>() {
+            @Override
+            public int compare(Teacher t1, Teacher t2) {
+                return Double.compare(t1.salary, t2.salary);
+            }
+        };
+        sortedList.sort(myComparator);
+        return sortedList;
     }
 
-    public void max() {
-
+    public Teacher max() {
+        Teacher teacher = Collections.max(teacherList, new Comparator<Teacher>() {
+            @Override
+            public int compare(Teacher t1, Teacher t2) {
+                return Double.compare(t1.salary, t2.salary);
+            }
+        });
+        return teacher;
     }
 }
