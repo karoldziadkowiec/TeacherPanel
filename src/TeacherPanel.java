@@ -21,7 +21,7 @@ public class TeacherPanel {
 
         System.out.println("\n\t/adding new salary for teacher Karol Dziadkowiec/");
         teacher1.printing();
-        classTeacher.addSalary(teacher1, 5000);
+        classTeacher.addSalary(teacher1, 500);
         teacher1.printing();
 
         System.out.println("\n\t/removing teacher/");

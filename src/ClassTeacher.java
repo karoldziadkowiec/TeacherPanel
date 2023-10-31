@@ -33,10 +33,12 @@ public class ClassTeacher {
         }
     }
 
-    public void addSalary(Teacher teacher, double newSalary) {
+    public void addSalary(Teacher teacher, double amount) {
         if (teacherList.contains(teacher)) {
+            double teacherSalary = teacher.getTeacherSalary();
+            double newSalary = teacherSalary + amount;
             teacher.setTeacherSalary(newSalary);
-            System.out.println("The salary " + teacher.getTeacherSalary() + " zł. has been added for teacher: " + teacher.getTeacherName() + " " + teacher.getTeacherSurname());
+            System.out.println("The salary has been increased by " + amount + " zł. for teacher: " + teacher.getTeacherName() + " " + teacher.getTeacherSurname());
         }
         else {
             System.out.println("Error. Teacher " + teacher.getTeacherName() + " " + teacher.getTeacherSurname() + " does not exist.");
