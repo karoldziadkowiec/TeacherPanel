@@ -12,7 +12,8 @@ public class ClassContainer {
     }
 
     public void addClass(ClassTeacher group) {
-        teacherGroups.put(group.groupName, group);
+        teacherGroups.put(group.getGroupName(), group);
+        System.out.println("The group has been added to container.");
     }
 
     public void removeClass(String groupName) {
@@ -38,11 +39,11 @@ public class ClassContainer {
     public void summary() {
         for (ClassTeacher group : teacherGroups.values()) {
             int currentSize = group.teacherList.size();
-            int limit = group.maxNumberOfTeachers;
+            int limit = group.getGroupLimit();
 
             double percent = (double) currentSize / limit * 100;
 
-            System.out.println("Group: " + group.groupName + ", Filling the group: " + percent + " %");
+            System.out.println("Group: " + group.getGroupName() + ", Filling the group: " + percent + " %");
         }
     }
 }

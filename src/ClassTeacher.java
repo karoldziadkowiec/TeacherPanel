@@ -5,28 +5,28 @@ import java.util.Comparator;
 public class ClassTeacher {
     String groupName;
     ArrayList<Teacher>teacherList = new ArrayList<Teacher>();
-    int maxNumberOfTeachers;
+    int groupLimit;
 
-    public ClassTeacher(String groupName, ArrayList<Teacher>teacherList, int maxNumberOfTeachers) {
+    public ClassTeacher(String groupName, ArrayList<Teacher>teacherList, int groupLimit) {
         this.groupName = groupName;
-        this.maxNumberOfTeachers = maxNumberOfTeachers;
+        this.groupLimit = groupLimit;
         this.teacherList = teacherList;
     }
 
-    public ClassTeacher(String groupName, int maxNumberOfTeachers) {
+    public ClassTeacher(String groupName, int groupLimit) {
         this.groupName = groupName;
-        this.maxNumberOfTeachers = maxNumberOfTeachers;
+        this.groupLimit = groupLimit;
     }
 
     public void addTeacher(Teacher newTeacher) {
         if (teacherList.contains(newTeacher)) {
-            System.out.println("Teacher " + newTeacher.name + " " + newTeacher.surname + " is already present in the group.");
+            System.out.println("Teacher " + newTeacher.getTeacherName() + " " + newTeacher.getTeacherSurname() + " is already present in the group.");
             return;
         }
 
-        if (teacherList.size() < maxNumberOfTeachers) {
+        if (teacherList.size() < groupLimit) {
             teacherList.add(newTeacher);
-            System.out.println("Teacher " + newTeacher.name + " " + newTeacher.surname + " has been added to the group.");
+            System.out.println("Teacher " + newTeacher.getTeacherName() + " " + newTeacher.getTeacherSurname() + " has been added to the group.");
         }
         else {
             System.out.println("Error. Cannot add teacher, maximum number of teachers in group reached.");
@@ -35,37 +35,37 @@ public class ClassTeacher {
 
     public void addSalary(Teacher teacher, double newSalary) {
         if (teacherList.contains(teacher)) {
-            teacher.salary = newSalary;
-            System.out.println("The salary " + teacher.salary + " zł. has been added for teacher: " + teacher.name + " " + teacher.surname);
+            teacher.setTeacherSalary(newSalary);
+            System.out.println("The salary " + teacher.getTeacherSalary() + " zł. has been added for teacher: " + teacher.getTeacherName() + " " + teacher.getTeacherSurname());
         }
         else {
-            System.out.println("Error. Teacher " + teacher.name + " " + teacher.surname + " does not exist.");
+            System.out.println("Error. Teacher " + teacher.getTeacherName() + " " + teacher.getTeacherSurname() + " does not exist.");
         }
     }
 
     public void removeTeacher(Teacher teacher) {
         if (teacherList.contains(teacher)) {
             teacherList.remove(teacher);
-            System.out.println("Teacher " + teacher.name + " " + teacher.surname + " has been removed.");
+            System.out.println("Teacher " + teacher.getTeacherName() + " " + teacher.getTeacherSurname() + " has been removed.");
         }
         else {
-            System.out.println("Error. Teacher " + teacher.name + " " + teacher.surname + " does not exist.");
+            System.out.println("Error. Teacher " + teacher.getTeacherName() + " " + teacher.getTeacherSurname() + " does not exist.");
         }
     }
 
     public void changeCondition(Teacher teacher, TeacherCondition newCondition) {
         if (teacherList.contains(teacher)) {
-            teacher.condition = newCondition;
-            System.out.println("Teacher condition of " + teacher.name + " " + teacher.surname + " has been set to: " + teacher.condition);
+            teacher.setTeacherCondition(newCondition);
+            System.out.println("Teacher condition of " + teacher.getTeacherName() + " " + teacher.getTeacherSurname() + " has been set to: " + teacher.getTeacherCondition());
         }
         else {
-            System.out.println("Error. Teacher " + teacher.name + " " + teacher.surname + " does not exist.");
+            System.out.println("Error. Teacher " + teacher.getTeacherName() + " " + teacher.getTeacherSurname() + " does not exist.");
         }
     }
 
     public Teacher search(String surname) {
         for(Teacher teacher : teacherList) {
-            String teacherSurname = teacher.surname;
+            String teacherSurname = teacher.getTeacherSurname();
             if(teacherSurname.compareTo(surname) == 0 ) {
                 return teacher;
             }
@@ -77,8 +77,8 @@ public class ClassTeacher {
         ArrayList<Teacher> matchingTeachers = new ArrayList<>();
 
         for (Teacher teacher : teacherList) {
-            String teacherName = teacher.name;
-            String teacherSurname = teacher.surname;
+            String teacherName = teacher.getTeacherName();
+            String teacherSurname = teacher.getTeacherSurname();
 
             if (teacherName.contains(partialString) || teacherSurname.contains(partialString)) {
                 matchingTeachers.add(teacher);
@@ -90,7 +90,7 @@ public class ClassTeacher {
     public int countByCondition(TeacherCondition searchedCondition) {
         int counter = 0;
         for(Teacher teacher : teacherList) {
-            TeacherCondition teacherCondition = teacher.condition;
+            TeacherCondition teacherCondition = teacher.getTeacherCondition();
             if(teacherCondition.compareTo(searchedCondition) == 0 ) {
                 counter++;
             }
@@ -116,7 +116,7 @@ public class ClassTeacher {
         Comparator<Teacher> myComparator = new Comparator<Teacher>() {
             @Override
             public int compare(Teacher t1, Teacher t2) {
-                return Double.compare(t1.salary, t2.salary);
+                return Double.compare(t1.getTeacherSalary(), t2.getTeacherSalary());
             }
         };
         sortedList.sort(Collections.reverseOrder(myComparator));
@@ -127,9 +127,25 @@ public class ClassTeacher {
         Teacher teacher = Collections.max(teacherList, new Comparator<Teacher>() {
             @Override
             public int compare(Teacher t1, Teacher t2) {
-                return Double.compare(t1.salary, t2.salary);
+                return Double.compare(t1.getTeacherSalary(), t2.getTeacherSalary());
             }
         });
         return teacher;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public int getGroupLimit() {
+        return groupLimit;
+    }
+
+    public void setGroupName(String newName) {
+        this.groupName = newName;
+    }
+
+    public void setGroupLimit(int newGroupLimit) {
+        this.groupLimit = newGroupLimit;
     }
 }

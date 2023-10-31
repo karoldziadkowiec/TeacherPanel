@@ -5,8 +5,8 @@ public class TeacherPanel {
         System.out.println("T E A C H E R   P A N E L");
 
         Teacher teacher1 = new Teacher("Karol", "Dziadkowiec", TeacherCondition.PRESENT, 2002, 4500);
-        Teacher teacher2 = new Teacher("Cristiano", "Ronaldo", TeacherCondition.ABSENT, 1985, 3900);
-        Teacher teacher3 = new Teacher("Leo", "Messi", TeacherCondition.DELEGATION, 1987, 4200);
+        Teacher teacher2 = new Teacher("Cristiano", "Ronaldo", TeacherCondition.ABSENT, 1985, 4200);
+        Teacher teacher3 = new Teacher("Leo", "Messi", TeacherCondition.DELEGATION, 1987, 3900);
         Teacher teacher4 = new Teacher("Robert", "Lewandowski", TeacherCondition.PRESENT, 1988, 4150);
 
         ArrayList<Teacher> teachers = new ArrayList<>();
@@ -29,9 +29,9 @@ public class TeacherPanel {
         classTeacher.summary();
 
         System.out.println("\n\t/changing teacher condition/");
-        teacher3.printing();
-        classTeacher.changeCondition(teacher3, TeacherCondition.DELEGATION);
-        teacher3.printing();
+        teacher2.printing();
+        classTeacher.changeCondition(teacher2, TeacherCondition.DELEGATION);
+        teacher2.printing();
 
         System.out.println("\n\t/searching for a teacher/");
         String teacherSurname = "Dziadkowiec";
@@ -91,7 +91,7 @@ public class TeacherPanel {
         System.out.println("\n\t/finding empty group/");
         ArrayList<ClassTeacher> emptyGroups = classContainer.findEmpty();
         for (ClassTeacher emptyClassTeacher : emptyGroups) {
-            System.out.println(emptyClassTeacher.groupName + ", group limit: " + emptyClassTeacher.maxNumberOfTeachers);
+            System.out.println(emptyClassTeacher.groupName + ", group limit: " + emptyClassTeacher.groupLimit);
         }
 
         System.out.println("\n\t/testing summary method/");

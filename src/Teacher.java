@@ -24,4 +24,45 @@ public class Teacher implements Comparable<Teacher>{
     public int compareTo(Teacher otherTeacher) {
         return this.surname.compareTo(otherTeacher.surname);
     }
+
+    public String getTeacherName() {
+        return name;
+    }
+
+    public String getTeacherSurname() {
+        return surname;
+    }
+
+    public TeacherCondition getTeacherCondition() {
+        return condition;
+    }
+
+    public Integer getTeacherBirthday() {
+        return birthday;
+    }
+
+    public double getTeacherSalary() {
+        return salary;
+    }
+
+    public void setTeacherName(String newName) {
+        this.name = newName;
+    }
+
+    public void setTeacherSurname(String newSurname) {
+        this.surname = newSurname;
+    }
+
+    public void setTeacherCondition(TeacherCondition newCondition) {
+        this.condition = newCondition;
+    }
+
+    public void setTeacherBirthday(Integer newBirthday) {
+        this.birthday = newBirthday;
+    }
+
+    public void setTeacherSalary(double newSalary) {
+        this.salary = newSalary;
+    }
+
 }
