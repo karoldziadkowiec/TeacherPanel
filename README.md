@@ -24,5 +24,5 @@ Technology used in the project: Java.
 
 Use of the above functionalities:
 ![1](https://github.com/karoldziadkowiec/TeacherPanel/blob/master/photos/1_.png)
-![2](https://github.com/karoldziadkowiec/GeometricCalculator/blob/master/photos/2.png)
-![3](https://github.com/karoldziadkowiec/GeometricCalculator/blob/master/photos/3.png)
+![2](https://github.com/karoldziadkowiec/TeacherPanel/blob/master/photos/2.png)
+![3](https://github.com/karoldziadkowiec/TeacherPanel/blob/master/photos/3.png)
