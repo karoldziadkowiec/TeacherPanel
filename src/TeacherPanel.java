@@ -10,7 +10,7 @@ public class TeacherPanel {
         Teacher teacher4 = new Teacher("Robert", "Lewandowski", TeacherCondition.PRESENT, 1988, 4150);
 
         ArrayList<Teacher> teachers = new ArrayList<>();
-        ClassTeacher classTeacher = new ClassTeacher("I High School", teachers, 25);
+        ClassTeacher classTeacher = new ClassTeacher("Physical Education", teachers, 7);
 
         System.out.println("\n\t/adding new teachers/");
         classTeacher.addTeacher(teacher1);
@@ -62,11 +62,40 @@ public class TeacherPanel {
         classTeacher.sortByName();
         classTeacher.summary();
 
-        System.out.println("\n\t/sorting alphabetically by name/");
+        System.out.println("\n\t/sorting by salary in descending order/");
         classTeacher.sortBySalary();
         classTeacher.summary();
 
+        System.out.println("\n\t/max salary in a group/");
+        searchedTeacher = classTeacher.max();
+        if (searchedTeacher != null) {
+            System.out.println("Max salary in a group was successfully found:");
+            searchedTeacher.printing();
+        }
+        else {
+            System.out.println("Max salary in a group wasn't found.");
+        }
 
+        System.out.println("\n\t/adding new teacher group/");
+        ClassContainer classContainer = new ClassContainer();
+        classContainer.addClass("Maths", 4);
+        classContainer.summary();
 
+        System.out.println("\n\t/removing teacher group/");
+        classContainer.addClass("English", 7);
+        classContainer.summary();
+        String groupToRemove = "English";
+        classContainer.removeClass(groupToRemove);
+        classContainer.summary();
+
+        System.out.println("\n\t/finding empty group/");
+        ArrayList<ClassTeacher> emptyGroups = classContainer.findEmpty();
+        for (ClassTeacher emptyClassTeacher : emptyGroups) {
+            System.out.println(emptyClassTeacher.groupName + ", group limit: " + emptyClassTeacher.maxNumberOfTeachers);
+        }
+
+        System.out.println("\n\t/testing summary method/");
+        classContainer.addClass(classTeacher);
+        classContainer.summary();
     }
 }

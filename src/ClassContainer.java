@@ -5,10 +5,14 @@ import java.util.Map;
 public class ClassContainer {
     Map<String, ClassTeacher> teacherGroups = new HashMap<>();
 
-    public void addClass(String groupName, int limitGroup) {
-        ClassTeacher group = new ClassTeacher(groupName, limitGroup);
+    public void addClass(String groupName, int groupLimit) {
+        ClassTeacher group = new ClassTeacher(groupName, groupLimit);
         teacherGroups.put(groupName, group);
         System.out.println("The group has been created.");
+    }
+
+    public void addClass(ClassTeacher group) {
+        teacherGroups.put(group.groupName, group);
     }
 
     public void removeClass(String groupName) {
@@ -38,7 +42,7 @@ public class ClassContainer {
 
             double percent = (double) currentSize / limit * 100;
 
-            System.out.println("Group: " + group.groupName + ", Filling the group: " + percent + "%");
+            System.out.println("Group: " + group.groupName + ", Filling the group: " + percent + " %");
         }
     }
 }
