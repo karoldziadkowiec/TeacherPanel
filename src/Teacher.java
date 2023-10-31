@@ -14,11 +14,10 @@ public class Teacher implements Comparable<Teacher>{
     }
 
     public void printing() {
-        System.out.println("Name: " + name);
-        System.out.print(", Surname: " + surname);
+        System.out.print("Teacher: " + name + " " + surname);
         System.out.print(", Condition: " + condition);
         System.out.print(", Birthday: " + birthday);
-        System.out.print(", Salary: " + salary);
+        System.out.println(", Salary: " + salary + " zł.");
     }
 
     @Override

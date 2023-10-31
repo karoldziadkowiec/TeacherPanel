@@ -23,6 +23,22 @@ public class ClassContainer {
 
     public ArrayList<ClassTeacher> findEmpty() {
         ArrayList<ClassTeacher> emptyGroups = new ArrayList<>();
+        for (ClassTeacher group : teacherGroups.values()) {
+            if (group.teacherList.isEmpty()) {
+                emptyGroups.add(group);
+            }
+        }
+        return emptyGroups;
+    }
 
+    public void summary() {
+        for (ClassTeacher group : teacherGroups.values()) {
+            int currentSize = group.teacherList.size();
+            int limit = group.maxNumberOfTeachers;
+
+            double percent = (double) currentSize / limit * 100;
+
+            System.out.println("Group: " + group.groupName + ", Filling the group: " + percent + "%");
+        }
     }
 }

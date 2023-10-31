@@ -36,7 +36,7 @@ public class ClassTeacher {
     public void addSalary(Teacher teacher, double newSalary) {
         if (teacherList.contains(teacher)) {
             teacher.salary = newSalary;
-            System.out.println("Added salary: " + teacher.salary + " for teacher:" + teacher.name + " " + teacher.surname);
+            System.out.println("The salary " + teacher.salary + " zł. has been added for teacher: " + teacher.name + " " + teacher.surname);
         }
         else {
             System.out.println("Error. Teacher " + teacher.name + " " + teacher.surname + " does not exist.");
@@ -119,7 +119,7 @@ public class ClassTeacher {
                 return Double.compare(t1.salary, t2.salary);
             }
         };
-        sortedList.sort(myComparator);
+        sortedList.sort(Collections.reverseOrder(myComparator));
         return sortedList;
     }
 
